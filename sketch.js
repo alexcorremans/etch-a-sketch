@@ -50,10 +50,12 @@ function deleteGrid() {
 }
 
 function changeDimension() {
-  let boxesPerSide = prompt("How many squares do you want per side?")
-  while (!boxesPerSide) {
-    boxesPerSide = prompt("Please choose a number of squares:");
+  let input = prompt("How many squares do you want per side (max 100)?")
+  while (!input || Math.abs(parseInt(input)) > 100) {
+    console.log(input);
+    input = prompt("Please choose a number of squares below 100:");
   }
+  const boxesPerSide = Math.abs(parseInt(input));
   deleteGrid();
   createGrid(boxesPerSide);
 }
