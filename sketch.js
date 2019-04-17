@@ -34,7 +34,6 @@ function fillColor() {
 }
 
 function changeColor() {
-  console.log(this.value);
   document.documentElement.style.setProperty('--color', this.value);
 }
 
