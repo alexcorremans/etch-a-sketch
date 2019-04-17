@@ -9,7 +9,7 @@ const clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', clearGrid);
 
 const changeButton = document.querySelector('#change');
-changeButton.addEventListener('click', promptDimension);
+changeButton.addEventListener('click', changeDimension);
 
 function createGrid(boxesPerSide) {
   // set CSS variable for each box's dimensions
@@ -49,7 +49,7 @@ function deleteGrid() {
   }
 }
 
-function promptDimension() {
+function changeDimension() {
   let boxesPerSide = prompt("How many squares do you want per side?")
   while (!boxesPerSide) {
     boxesPerSide = prompt("Please choose a number of squares:");
