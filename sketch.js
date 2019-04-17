@@ -27,7 +27,6 @@ function createGrid(boxesPerSide) {
   // add hover effect
   const boxes = document.querySelectorAll('.box');
   boxes.forEach(box => box.addEventListener('mouseenter', fillColor));
-  boxes.forEach(box => box.addEventListener('touchstart', fillColor));
 }
 
 function fillColor() {
