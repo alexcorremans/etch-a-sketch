@@ -43,7 +43,10 @@ function deleteGrid() {
 }
 
 function promptDimension() {
-  const boxesPerSide = prompt("How many squares do you want per side?")
+  let boxesPerSide = prompt("How many squares do you want per side?")
+  while (!boxesPerSide) {
+    boxesPerSide = prompt("Please choose a number of squares:");
+  }
   deleteGrid();
   createGrid(boxesPerSide);
 }
