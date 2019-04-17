@@ -50,7 +50,13 @@ table {
 /* Box-sizing border-box*/
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-/* actual styling */
+/* Variables for box width and height */
+
+:root {
+  --length: 6.25%;
+}
+
+/* Grid styling */
 
 .container {
   margin: 100px auto 50px;
@@ -62,14 +68,16 @@ table {
 }
 
 .box {
-  width: 6.25%; /* 1/16 * 100 = 6.25% */
-  height: 6.25%;
+  width: var(--length);
+  height: var(--length);
   flex-grow: 1;
 }
 
 .colored {
-  background-color: black;
+  background-color: goldenrod;
 }
+
+/* Buttons */
 
 .buttons {
   margin: auto;

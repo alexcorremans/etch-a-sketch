@@ -1,32 +1,50 @@
-// create boxes
-
 const container = document.querySelector('.container');
-const boxesPerSide = 16
-const boxCount = Math.pow(boxesPerSide, 2)
 
-for (let i = 0; i < boxCount; i++) {
-  const box = document.createElement('div');
-  box.classList.add('box');
-  container.appendChild(box);
+document.addEventListener('DOMContentLoaded', createGrid(16));
+
+const clearButton = document.querySelector('#clear');
+clearButton.addEventListener('click', clearGrid);
+
+const changeButton = document.querySelector('#change');
+changeButton.addEventListener('click', promptDimension);
+
+function createGrid(boxesPerSide) {
+  // set CSS variable for each box's dimensions
+  const length = 1/boxesPerSide * 100
+  document.documentElement.style.setProperty('--length', length + '%');
+  
+  // add boxes to the page
+  const boxCount = Math.pow(boxesPerSide, 2)
+  for (let i = 0; i < boxCount; i++) {
+    const box = document.createElement('div');
+    box.classList.add('box');
+    container.appendChild(box);
+  }
+
+  // add hover effect
+  const boxes = document.querySelectorAll('.box');
+  boxes.forEach(box => box.addEventListener('mouseenter', changeColor));
 }
-
-// add hover effect
 
 function changeColor() {
   this.classList.add('colored');
 }
 
-const boxes = document.querySelectorAll('.box');
-boxes.forEach(box => box.addEventListener('mouseenter', changeColor));
-
-// clear grid
-
 function clearGrid() {
+  const boxes = document.querySelectorAll('.box');
   boxes.forEach(box => box.classList.remove('colored'));
 }
 
-const clearButton = document.querySelector('#clear');
-clearButton.addEventListener('click', clearGrid);
+function deleteGrid() {
+  clearGrid();
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+}
 
-// change dimensions
+function promptDimension() {
+  const boxesPerSide = prompt("How many squares do you want per side?")
+  deleteGrid();
+  createGrid(boxesPerSide);
+}
 
