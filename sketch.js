@@ -2,6 +2,9 @@ const container = document.querySelector('.container');
 
 document.addEventListener('DOMContentLoaded', createGrid(16));
 
+const colorInput = document.querySelector('#color');
+colorInput.addEventListener('change', changeColor);
+
 const clearButton = document.querySelector('#clear');
 clearButton.addEventListener('click', clearGrid);
 
@@ -23,11 +26,16 @@ function createGrid(boxesPerSide) {
 
   // add hover effect
   const boxes = document.querySelectorAll('.box');
-  boxes.forEach(box => box.addEventListener('mouseenter', changeColor));
+  boxes.forEach(box => box.addEventListener('mouseenter', fillColor));
+}
+
+function fillColor() {
+  this.classList.add('colored');
 }
 
 function changeColor() {
-  this.classList.add('colored');
+  console.log(this.value);
+  document.documentElement.style.setProperty('--color', this.value);
 }
 
 function clearGrid() {

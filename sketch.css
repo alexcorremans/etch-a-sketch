@@ -15,6 +15,7 @@ html, body, div {
 
 :root {
   --length: 6.25%;
+  --color: #009fff;
 }
 
 .container {
@@ -33,7 +34,7 @@ html, body, div {
 }
 
 .colored {
-  background-color: black;
+  background-color: var(--color);
 }
 
 /* Other elements */
@@ -46,6 +47,17 @@ h1 {
 .buttons {
   margin: auto;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 50vw;
+  justify-content: space-between;
+}
+
+@media all and (max-width:900px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+input, button {
+  width: 140px;
 }
